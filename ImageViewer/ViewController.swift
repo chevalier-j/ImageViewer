@@ -7,7 +7,7 @@
 
 import UIKit
 
-class ViewController: UIViewController {
+class ViewController: UITableViewController {
     
     // property to keep all values after viewDidLoad is destroyed
     var pictures = [String]()
@@ -29,5 +29,6 @@ class ViewController: UIViewController {
                 pictures.append(item)
             }
         }
+        //print(pictures)
     }
 }
