@@ -22,8 +22,19 @@ class DetailViewController: UIViewController {
             imageView.image = UIImage(named: imageToLoad)
         }
 }
+    // we override methods in UIViewController to customise the behaviour
+    // enable hidesBarOnTap only when detail view is showing
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        navigationController?.hidesBarsOnTap = true
+    }
     
-
+    // disable hidesBarOnTap when detailview is not showing
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        navigationController?.hidesBarsOnTap = false
+    }
+    
     /*
     // MARK: - Navigation
 
