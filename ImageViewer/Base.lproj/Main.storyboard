@@ -67,6 +67,9 @@
                             <constraint firstAttribute="trailingMargin" secondItem="5Ry-nC-meS" secondAttribute="trailing" constant="-38" id="k3K-Fi-rRs"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="imageView" destination="5Ry-nC-meS" id="HtI-ho-gWj"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="KT3-Zd-Y9A" userLabel="First Responder" customClass="UIResponder" sceneMemberID="firstResponder"/>
             </objects>

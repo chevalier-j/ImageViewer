@@ -8,7 +8,12 @@
 import UIKit
 
 class DetailViewController: UIViewController {
-
+    // @IBOutlet attribute that tells xcode that there is a connection between this line and of code and the interface builder
+    // UIImageView! optional allows to reserve space for it in memory regardless if it exist at the time this runs
+    @IBOutlet var imageView: UIImageView!
+    
+    var selectedImage: String?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
