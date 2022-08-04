@@ -1,4 +1,4 @@
 # ImageViewer
 
-Simple image viewer using UIKit.
-Images are free to use (unsplash.com)
+Simple image viewer using UIKit. Cocoa Touch. Swift. Stodyboard.
+Images from unsplash.com
