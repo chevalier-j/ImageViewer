@@ -7,6 +7,7 @@
 
 import UIKit
 
+// ViewController builds up on UITableViewController, overriding defaults from it
 class ViewController: UITableViewController {
     
     // property to keep all values after viewDidLoad is destroyed
@@ -29,6 +30,24 @@ class ViewController: UITableViewController {
                 pictures.append(item)
             }
         }
-        //print(pictures)
+        print(pictures)
+    }
+    
+    // overriding defaults from UITableViewController
+    // iOS method. Establishing how many rows should appear in the table:
+    override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        // to have 1 cell per picture:
+        return pictures.count
+    }
+    // what each row should look like. Returns a type UITableViewCell
+    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        // recycle cells as they are no longer needed (ie while scrolling a table), improving performance
+        // return cell to display information
+        let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
+        // rather than check if there is text label or not we use ? for optional chaining ie: "do this only if text label data exists, elso do nothing
+        // give text label same text as the picture file name in our pictures array
+        // we use indexPath.row to read corresponding picture from pictures array and place that into cell text label
+        cell.textLabel?.text = pictures[indexPath.row]
+        return cell
     }
 }
