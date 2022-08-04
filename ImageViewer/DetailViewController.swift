@@ -16,9 +16,12 @@ class DetailViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
-    }
+        
+        // checks optional in selectedImage. If selectedImage is null, code won't execute
+        if let imageToLoad = selectedImage {
+            imageView.image = UIImage(named: imageToLoad)
+        }
+}
     
 
     /*
