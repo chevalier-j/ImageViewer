@@ -16,6 +16,9 @@ class ViewController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        title = "Image Viewer"
+        
+        navigationController?.navigationBar.prefersLargeTitles = true
         // assign the value from file manager.default to fm
         let fm = FileManager.default
         // sets the directory/bundle containing the compiled app/assets
