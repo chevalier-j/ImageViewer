@@ -19,7 +19,6 @@ class ViewController: UITableViewController {
         title = "Image Viewer"
         
         navigationController?.navigationBar.prefersLargeTitles = true
-        // assign the value from file manager.default to fm
         let fm = FileManager.default
         // sets the directory/bundle containing the compiled app/assets
         // ! ensures resource dir is there
@@ -27,8 +26,9 @@ class ViewController: UITableViewController {
         // try to read and store in array contents of above path
         // try! will crash app if items not found. Valid since no content = no app
         let items = try! fm.contentsOfDirectory(atPath: path)
-        // loop through all items found in the directory and check for right preffix nz
-        for item in items {
+        let sortedItems = items.sorted()
+        // loop through all items found in the directory and check for "nz" preffix
+        for item in sortedItems {
             if item.hasPrefix("nz") {
                 pictures.append(item)
             }
@@ -39,7 +39,7 @@ class ViewController: UITableViewController {
     // overriding defaults from UITableViewController
     // iOS method. Establishing how many rows should appear in the table:
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        // to have 1 cell per picture:
+        // create one cell per picture:
         return pictures.count
     }
     // what each row should look like. Returns a type UITableViewCell
@@ -47,7 +47,7 @@ class ViewController: UITableViewController {
         // recycle cells as they are no longer needed (ie while scrolling a table), improving performance
         // return cell to display information
         let cell = tableView.dequeueReusableCell(withIdentifier: "Picture", for: indexPath)
-        // rather than check if there is text label or not we use ? for optional chaining ie: "do this only if text label data exists, elso do nothing
+        // rather than checking if there is text label or not we use ? for optional chaining ie: "do this only if text label data exists, elso do nothing"
         // give text label same text as the picture file name in our pictures array
         // we use indexPath.row to read corresponding picture from pictures array and place that into cell text label
         cell.textLabel?.text = pictures[indexPath.row]
@@ -55,7 +55,7 @@ class ViewController: UITableViewController {
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        // if let allows application to remain safe if storyboard? or instantiateViewController or as? DetailViewController fail, as the code won't run
+        // if let protects application if storyboard? or instantiateViewController or as? DetailViewController fail, as the code won't run
         if let vc = storyboard?.instantiateViewController(withIdentifier: "Detail") as? DetailViewController {
             vc.selectedImage = pictures[indexPath.row]
             navigationController?.pushViewController(vc, animated: true)
