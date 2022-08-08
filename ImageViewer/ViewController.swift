@@ -19,6 +19,7 @@ class ViewController: UITableViewController {
         title = "Image Viewer"
         
         navigationController?.navigationBar.prefersLargeTitles = true
+        
         let fm = FileManager.default
         // sets the directory/bundle containing the compiled app/assets
         // ! ensures resource dir is there
@@ -29,7 +30,8 @@ class ViewController: UITableViewController {
         let sortedItems = items.sorted()
         // loop through all items found in the directory and check for "nz" preffix
         for item in sortedItems {
-            if item.hasPrefix("nz") {
+            if item.lowercased().hasSuffix(".jpg") ||
+                item.lowercased().hasSuffix(".jpeg") {
                 pictures.append(item)
             }
         }
